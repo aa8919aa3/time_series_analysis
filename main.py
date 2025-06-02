@@ -6,15 +6,14 @@ from pathlib import Path
 from typing import Optional
 
 # Add the package directory to Python path
-sys.path.insert(0, str(Path(__file__).parent))
+current_dir = Path(__file__).parent
+sys.path.insert(0, str(current_dir))
 
-from time_series_analysis import (
-    AnalysisConfig, 
-    load_data_safe, 
-    LombScargleAnalyzer, 
-    CustomModelAnalyzer,
-    PlottingManager
-)
+# Direct imports from module files in the current directory
+from config import AnalysisConfig
+from data_loader import load_data_safe
+from analysis import LombScargleAnalyzer, CustomModelAnalyzer
+from plotting import PlottingManager
 
 # Setup logging
 logging.basicConfig(
@@ -29,23 +28,20 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def run_analysis(config_path: Optional[str] = None) -> None:
+def run_analysis(data_file: str = None) -> None:
     """
     Run complete time series analysis pipeline.
     
     Args:
-        config_path: Optional path to configuration file
+        data_file: Specific data file to analyze
     """
     logger.info("=== Starting Time Series Analysis ===")
     
-    # Load configuration
-    if config_path:
-        # TODO: Implement config loading from file
-        logger.info(f"Loading configuration from {config_path}")
-        config = AnalysisConfig()  # Placeholder
-    else:
-        config = AnalysisConfig()
+    # Use specified data file or default
+    file_path = data_file if data_file else '164_ic.csv'
+    config = AnalysisConfig(file_path=file_path)
     
+    logger.info(f"Analyzing file: {config.file_path}")
     logger.info(f"Configuration: {config.to_dict()}")
     
     # Load data
@@ -57,6 +53,8 @@ def run_analysis(config_path: Optional[str] = None) -> None:
             config.error_column
         )
         logger.info(f"Loaded {len(times)} data points")
+        logger.info(f"Time range: [{times.min():.6f}, {times.max():.6f}]")
+        logger.info(f"Value range: [{values.min():.3e}, {values.max():.3e}]")
         
     except Exception as e:
         logger.error(f"Failed to load data: {e}")
@@ -117,6 +115,7 @@ def run_analysis(config_path: Optional[str] = None) -> None:
     
     # Summary
     logger.info("=== Analysis Summary ===")
+    logger.info(f"File: {config.file_path}")
     if ls_results and ls_results.frequency is not None:
         logger.info(f"Lomb-Scargle - Best Period: {ls_results.best_period:.6f}, R²: {ls_results.r_squared:.4f}")
     
@@ -130,13 +129,29 @@ def run_analysis(config_path: Optional[str] = None) -> None:
             logger.info(f"  Transparency (T): {params['T'].value:.3f}")
             logger.info(f"  Frequency (f): {params['f'].value:.3e}")
     
-    logger.info("=== Analysis Complete ===")
+    logger.info("=== Analysis Complete ===\n")
+
+
+def run_all_files():
+    """Run analysis on both available data files."""
+    data_files = ['164_ic.csv', '317_ic.csv']
+    
+    for data_file in data_files:
+        if Path(data_file).exists():
+            logger.info(f"\n{'='*60}")
+            logger.info(f"ANALYZING: {data_file}")
+            logger.info(f"{'='*60}")
+            run_analysis(data_file=data_file)
+        else:
+            logger.warning(f"File not found: {data_file}")
 
 
 def main():
     """Main entry point."""
     try:
-        run_analysis()
+        # Check if both files exist and run analysis on them
+        run_all_files()
+        
     except KeyboardInterrupt:
         logger.info("Analysis interrupted by user")
     except Exception as e:
@@ -146,3 +161,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

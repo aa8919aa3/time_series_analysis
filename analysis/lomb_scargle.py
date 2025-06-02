@@ -8,7 +8,10 @@ import numpy.typing as npt
 import logging
 
 from .utils import calculate_r_squared, detrend_data, compute_residuals_integral
-from ..config import AnalysisConfig
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
+from config import AnalysisConfig
 
 logger = logging.getLogger(__name__)
 

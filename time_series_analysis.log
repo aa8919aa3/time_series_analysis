@@ -1,0 +1,58 @@
+2025-06-02 11:43:36,214 - __main__ - INFO - 
+============================================================
+2025-06-02 11:43:36,214 - __main__ - INFO - ANALYZING: 164_ic.csv
+2025-06-02 11:43:36,215 - __main__ - INFO - ============================================================
+2025-06-02 11:43:36,215 - __main__ - INFO - === Starting Time Series Analysis ===
+2025-06-02 11:43:36,215 - __main__ - INFO - Analyzing file: 164_ic.csv
+2025-06-02 11:43:36,215 - __main__ - INFO - Configuration: {'file_path': '164_ic.csv', 'time_column': 'Time', 'value_column': 'Ic', 'error_column': None, 'min_frequency_ls': None, 'max_frequency_ls': 500000, 'samples_per_peak_ls': 10, 'fap_levels_ls': [0.1, 0.05, 0.01], 'detrend_order_ls': 1, 'd_multiplier': 100, 'c_multiplier': 10, 'd_intervals': 200, 'c_intervals': 20, 'plot_title_prefix': 'Time Series Analysis', 'plot_theme': 'plotly_white'}
+2025-06-02 11:43:36,233 - data_loader - INFO - Successfully loaded 501 data points from 164_ic.csv
+2025-06-02 11:43:36,233 - __main__ - INFO - Loaded 501 data points
+2025-06-02 11:43:36,233 - __main__ - INFO - Time range: [0.002850, 0.002950]
+2025-06-02 11:43:36,234 - __main__ - INFO - Value range: [9.000e-07, 2.460e-06]
+2025-06-02 11:43:36,234 - __main__ - INFO - --- Starting Lomb-Scargle Analysis ---
+2025-06-02 11:43:36,234 - analysis.lomb_scargle - INFO - Starting Lomb-Scargle analysis
+2025-06-02 11:43:36,234 - analysis.utils - INFO - Data detrended using polynomial of order 1
+2025-06-02 11:43:36,234 - analysis.lomb_scargle - INFO - Data detrended with polynomial order 1
+2025-06-02 11:43:36,234 - analysis.lomb_scargle - INFO - Auto-setting minimum frequency to 5.00e+03
+2025-06-02 11:43:36,236 - analysis.lomb_scargle - INFO - Computed periodogram with 496 frequency points
+2025-06-02 11:43:36,236 - analysis.lomb_scargle - INFO - Best frequency: 105000.000000
+2025-06-02 11:43:36,236 - analysis.lomb_scargle - INFO - Best period: 0.000010
+2025-06-02 11:43:36,236 - analysis.lomb_scargle - INFO - Best power: 0.8455
+2025-06-02 11:43:36,237 - analysis.lomb_scargle - INFO - R-squared: 1.0000
+2025-06-02 11:43:36,237 - analysis.lomb_scargle - INFO - Residuals integral: 3.2506e-14
+2025-06-02 11:43:36,242 - analysis.lomb_scargle - INFO - FAP for best peak: 5.20e-198
+2025-06-02 11:43:36,242 - analysis.lomb_scargle - INFO - Power threshold for 10.0% FAP: 0.0417
+2025-06-02 11:43:36,242 - analysis.lomb_scargle - INFO - Power threshold for 5.0% FAP: 0.0446
+2025-06-02 11:43:36,242 - analysis.lomb_scargle - INFO - Power threshold for 1.0% FAP: 0.0511
+2025-06-02 11:43:36,243 - analysis.lomb_scargle - INFO - Lomb-Scargle analysis completed
+2025-06-02 11:43:36,243 - __main__ - INFO - Lomb-Scargle analysis completed successfully
+2025-06-02 11:43:39,295 - __main__ - ERROR - Lomb-Scargle analysis failed: add_data_trace() got an unexpected keyword argument 'marker'
+2025-06-02 11:43:39,296 - __main__ - INFO - --- Starting Josephson Junction Model Analysis ---
+2025-06-02 11:43:39,296 - analysis.custom_models - INFO - Starting Josephson junction model fitting
+2025-06-02 11:43:39,296 - analysis.custom_models - INFO - No errors provided. Performing unweighted fit.
+2025-06-02 11:43:39,330 - analysis.custom_models - INFO - Initial parameters:
+2025-06-02 11:43:39,330 - analysis.custom_models - INFO -   Ic: 8.467957427602375e-07
+2025-06-02 11:43:39,330 - analysis.custom_models - INFO -   T: 0.3
+2025-06-02 11:43:39,330 - analysis.custom_models - INFO -   f: 10000.000000000016
+2025-06-02 11:43:39,330 - analysis.custom_models - INFO -   d: 0.00285
+2025-06-02 11:43:39,330 - analysis.custom_models - INFO -   phi0: 0.0
+2025-06-02 11:43:39,330 - analysis.custom_models - INFO -   k: 0.0
+2025-06-02 11:43:39,330 - analysis.custom_models - INFO -   r: 0.0032959992365865737
+2025-06-02 11:43:39,330 - analysis.custom_models - INFO -   C: 1.705748502994012e-06
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO - Fit successful. R-squared: 1.0000
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO - Residuals integral: 6.7533e-14
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO - Final parameters:
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO -   Ic: 2.350e-05 ± 1.024e-02
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO -   T: 6.487e-01 ± 1.231e+02
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO -   f: 1.934e+03 ± 5.601e+05
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO -   d: 2.820e-03 ± 1.241e+00
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO -   phi0: -1.379e+00 ± 1.520e+04
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO -   k: 2.733e+03 ± 2.834e+05
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO -   r: -2.108e-01 ± 6.799e+03
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO -   C: -2.386e-05 ± 2.657e-01
+2025-06-02 11:43:40,148 - analysis.custom_models - INFO - Computing parameter boundaries matrix for Josephson model...
+2025-06-02 11:43:40,149 - analysis.custom_models - INFO - Mean external parameter: 0.002900, Mean current: 1.705749e-06
+2025-06-02 11:43:40,149 - analysis.custom_models - INFO - d parameter range: [-0.290000, 0.290000] in 200 intervals
+2025-06-02 11:43:40,149 - analysis.custom_models - INFO - C parameter range: [-1.705749e-05, 1.705749e-05] in 20 intervals
+2025-06-02 11:43:40,149 - analysis.custom_models - INFO - Starting 4000 Josephson fits with 7 parallel jobs...
+2025-06-02 11:44:57,565 - __main__ - INFO - Analysis interrupted by user

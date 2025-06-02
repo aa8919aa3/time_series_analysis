@@ -9,7 +9,10 @@ from functools import partial
 import multiprocessing as mp
 
 from .utils import calculate_r_squared, compute_residuals_integral
-from ..config import AnalysisConfig
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
+from config import AnalysisConfig
 
 logger = logging.getLogger(__name__)
 

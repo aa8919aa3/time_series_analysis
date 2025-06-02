@@ -7,10 +7,13 @@ from typing import Optional
 import numpy.typing as npt
 import logging
 
-from ..config import AnalysisConfig
-from ..analysis.custom_models import CustomModelResults
-from ..analysis.lomb_scargle import LombScargleResults
-from .base import setup_plot_layout, add_data_trace
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
+from config import AnalysisConfig
+from analysis.custom_models import CustomModelResults
+from analysis.lomb_scargle import LombScargleResults
+from .utils import setup_plot_layout, add_data_trace, add_model_trace
 
 logger = logging.getLogger(__name__)
 

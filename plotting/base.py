@@ -7,8 +7,12 @@ from typing import Optional, List, Union
 import numpy.typing as npt
 import logging
 
-from ..config import AnalysisConfig
-from ..analysis import LombScargleAnalyzer, CustomModelAnalyzer
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent))
+from config import AnalysisConfig
+from analysis import LombScargleAnalyzer, CustomModelAnalyzer
+from .utils import setup_plot_layout, add_data_trace, add_model_trace
 from .lomb_scargle_plots import LombScarglePlotter
 from .custom_model_plots import CustomModelPlotter
 
